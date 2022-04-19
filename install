@@ -44,7 +44,11 @@ docker-compose up -d
 echo "Waiting for Poste container to boot up..."
 sleep 60
 
-docker exec mailserver poste domain:create example.com
-docker exec mailserver poste email:create admin@example.com
-docker exec mailserver poste email:passwd admin@example.com admin
-docker exec mailserver poste email:admin admin@example.com
+#docker exec mailserver poste domain:create example.com
+#docker exec mailserver poste email:create admin@example.com
+#docker exec mailserver poste email:passwd admin@example.com admin
+#docker exec mailserver poste email:admin admin@example.com
+
+IP=$(hostname  -I | cut -f1 -d' ')
+echo "You can now access your Poste Install http://$IP/admin/install/server"
+
