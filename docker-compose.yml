@@ -25,9 +25,5 @@ services:
     restart: unless-stopped
 #    network_mode: host
     volumes:
-      - /etc/localtime:/etc/localtime:ro
+      - /etc/localtime:/etc/localtime
       - ~/poste:/data:rw
-#      - /data/nginx/html/.well-known:/opt/www/.well-known:rw
-#      - /data/nginx/certs/mail.shadowmailer.com/key.pem:/data/ssl/server.key:ro
-#      - /data/nginx/certs/mail.shadowmailer.com/fullchain.pem:/data/ssl/ca.crt:ro
-#      - /data/nginx/certs/mail.shadowmailer.com/cert.pem:/data/ssl/server.crt:ro
