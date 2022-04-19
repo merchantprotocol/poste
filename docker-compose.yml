@@ -23,7 +23,7 @@ services:
     image: analogic/poste.io:latest
     container_name: mailserver
     restart: unless-stopped
-    network_mode: host
+#    network_mode: host
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - ~/poste:/data:rw
