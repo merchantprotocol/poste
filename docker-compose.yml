@@ -19,7 +19,14 @@ services:
       - 587:587
       - 993:993
       - 995:995
-#      - 4190:4190
+      - 4190:4190
+      - 11332:11332
+      - 11333:11333
+      - 11334:11334
+      - 6379:6379
+      - 11380:11380
+      - 11381:11381
+      - 39021:39021
     image: analogic/poste.io:latest
     container_name: mailserver
     restart: unless-stopped
