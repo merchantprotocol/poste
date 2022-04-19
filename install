@@ -1,0 +1,13 @@
+#!/bin/bash
+
+echo "Installing Poste"
+
+git clone https://github.com/merchantprotocol/poste.git
+cd poste
+
+docker-compose up -d
+
+docker exec mailserver poste domain:create example.com
+docker exec mailserver poste email:create admin@example.com
+docker exec mailserver poste email:passwd admin@example.com admin
+docker exec mailserver poste email:admin admin@example.com
