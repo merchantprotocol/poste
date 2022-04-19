@@ -10,7 +10,7 @@ services:
       - HTTPS=ON
       - TZ=America/Los_Angeles
     ports:
-      - 25:[::]25
+      - "25:25"
       - 80:80
       - 110:110
       - 143:143
