@@ -2,21 +2,30 @@ version: '3'
 
 services:
   mailserver:
-    image: analogic/poste.io:latest
-    container_name: poste
     hostname: mail.shadowmailer.com
-    restart: unless-stopped
-    network_mode: host
     environment:
       - LETSENCRYPT_EMAIL=jonathon@shadowmailer.com
       - LETSENCRYPT_HOST=mail.shadowmailer.com
       - VIRTUAL_HOST=mail.shadowmailer.com
       - HTTPS=ON
       - TZ=America/Los_Angeles
+    ports:
+      - 25:25
+      - 110:110
+      - 143:143
+      - 465:465
+      - 587:587
+      - 993:993
+      - 995:995
+#      - 4190:4190
+    image: analogic/poste.io:latest
+    container_name: mailserver
+    restart: unless-stopped
+    network_mode: host
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - /data/mailserver:/data:rw
-      - /data/nginx/html/.well-known:/opt/www/.well-known:rw
-      - /data/nginx/certs/mail.shadowmailer.com/key.pem:/data/ssl/server.key:ro
-      - /data/nginx/certs/mail.shadowmailer.com/fullchain.pem:/data/ssl/ca.crt:ro
-      - /data/nginx/certs/mail.shadowmailer.com/cert.pem:/data/ssl/server.crt:ro
+      - ~/poste:/data:rw
+#      - /data/nginx/html/.well-known:/opt/www/.well-known:rw
+#      - /data/nginx/certs/mail.shadowmailer.com/key.pem:/data/ssl/server.key:ro
+#      - /data/nginx/certs/mail.shadowmailer.com/fullchain.pem:/data/ssl/ca.crt:ro
+#      - /data/nginx/certs/mail.shadowmailer.com/cert.pem:/data/ssl/server.crt:ro
